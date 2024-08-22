@@ -62,6 +62,10 @@ pub fn create_mutator<VM: VMBinding>(
         PlanSelector::MyGC => {
             crate::plan::mygc::mutator::create_mygc_mutator(tls, mmtk)
         }
+
+        PlanSelector::TripleSpace => {
+            crate::plan::triplespace::mutator::create_triplespace_mutator(tls, mmtk)
+        }
     })
 }
 
@@ -98,6 +102,10 @@ pub fn create_plan<VM: VMBinding>(
 
         PlanSelector::MyGC => {
             Box::new(crate::plan::mygc::MyGC::new(args)) as Box<dyn Plan<VM = VM>>
+        }
+
+        PlanSelector::TripleSpace => {
+            Box::new(crate::plan::triplespace::TripleSpace::new(args)) as Box<dyn Plan<VM = VM>>
         }
     };
 

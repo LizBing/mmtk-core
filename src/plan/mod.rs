@@ -52,6 +52,7 @@ mod pageprotect;
 mod semispace;
 
 mod mygc;
+mod triplespace;
 
 pub(crate) use generational::global::is_nursery_gc;
 pub(crate) use generational::global::GenerationalPlan;
